@@ -4,7 +4,7 @@ import os
 
 
 @fixture
-def reference_image_keys():
+def reference_image_keys() -> list:
     """
     Responsible only for returning the test data
     :return:
@@ -19,8 +19,8 @@ def test_reference_images(reference_image_keys):
     """
 
     instance = API(auth_token=os.environ.get('PANDABUY_AUTH_KEY', None))
-    response = instance.get_images(url="https:%2F%2Fweidian.com%2Fitem.html%3FitemID%3D4450402251&userId=803765341")
+    response = instance.get_images(url="https://item.taobao.com/item.htm?id=693312973557")
 
     assert isinstance(response, dict)
-    assert response['url'] == "https:%2F%2Fweidian.com%2Fitem.html%3FitemID%3D4450402251&userId=803765341"
+    assert response['url'] == "https://item.taobao.com/item.htm?id=693312973557"
     assert set(reference_image_keys).issubset(response.keys())
