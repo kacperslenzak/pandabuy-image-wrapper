@@ -1,5 +1,9 @@
 name: CI
 
+env:
+  PANDABUY_AUTH_KEY: ${{ secrets.PANDABUY_AUTH_KEY }}
+  PANDABUY_USER_ID: ${{ secrets.PANDABUY_USER_ID }}
+
 on: [pull_request, push, workflow_dispatch]
 
 jobs:
@@ -20,9 +24,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
-          PANDABUY_AUTH_KEY: ${{ secrets.PANDABUY_AUTH_KEY }}
-          PANDABUY_USER_ID: ${{ secrets.PANDABUY_USER_ID }}
-
 
       - name: Install
         run: |
