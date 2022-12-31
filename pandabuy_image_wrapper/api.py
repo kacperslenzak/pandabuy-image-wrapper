@@ -9,10 +9,6 @@ class API(object):
     def get_images(url):
         path = "https://www.pandabuy.com/gateway/order/itemGet?url={}".format(url)
         response = session.get(path).json()
-        print(session.headers)
-        print(session.params)
-
-        print(response)
 
         output = {
             'url': url,
