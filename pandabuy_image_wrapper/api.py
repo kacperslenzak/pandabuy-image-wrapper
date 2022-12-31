@@ -10,6 +10,8 @@ class API(object):
         path = "https://www.pandabuy.com/gateway/order/itemGet?url={}".format(url)
         response = session.get(path).json()
 
+        print(response)
+
         output = {
             'url': url,
             'imageList': response['data']['item']['timeInfo']['imageList']

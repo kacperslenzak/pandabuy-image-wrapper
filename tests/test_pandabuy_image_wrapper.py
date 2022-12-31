@@ -21,8 +21,6 @@ def test_reference_images(reference_image_keys):
     instance = API(auth_token=os.environ.get('PANDABUY_AUTH_KEY', None))
     response = instance.get_images(url="https:%2F%2Fweidian.com%2Fitem.html%3FitemID%3D4450402251&userId=803765341")
 
-    print(response)
-
     assert isinstance(response, dict)
     assert response['url'] == "https:%2F%2Fweidian.com%2Fitem.html%3FitemID%3D4450402251&userId=803765341"
     assert set(reference_image_keys).issubset(response.keys())
