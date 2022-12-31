@@ -1,5 +1,9 @@
 name: CI
 
+env:
+  PANDABUY_AUTH_KEY: ${{ secrets.PANDABUY_AUTH_KEY }}
+  PANDABUY_USER_ID: ${{ secrets.PANDABUY_USER_ID }}
+
 on: [pull_request, push, workflow_dispatch]
 
 jobs:
@@ -27,6 +31,3 @@ jobs:
 
       - name: Run tests
         run: pytest
-        with:
-          PANDABUY_AUTH_KEY: ${{ secrets.PANDABUY_AUTH_KEY }}
-          PANDABUY_USER_ID: ${{ secrets.PANDABUY_USER_ID }}
