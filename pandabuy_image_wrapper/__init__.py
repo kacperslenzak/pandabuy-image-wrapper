@@ -13,6 +13,10 @@ class UserIDMissingError(Exception):
     pass
 
 
+class InvalidURLError(Exception):
+    pass
+
+
 if PANDABUY_AUTH_KEY is None:
     raise APIKeyMissingError(
         "All methods require you to use your pandabuy auth key. See "

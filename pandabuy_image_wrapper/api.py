@@ -1,4 +1,5 @@
-from . import session
+from pandabuy_image_wrapper import session, InvalidURLError
+from pandabuy_image_wrapper.helpers import validate_url
 
 
 class API(object):
@@ -7,6 +8,14 @@ class API(object):
 
     @staticmethod
     def get_images(url) -> dict:
+        if not validate_url(url):
+            raise InvalidURLError(
+                "You passed an invalid URL. See "
+                "https://github.com/hiihex/pandabuy-image-wrapper README "
+                "on what urls are allowed to be passed "
+                "to fetch Images"
+            )
+
         path = "https://www.pandabuy.com/gateway/order/itemGet?url={}".format(url)
         response = session.get(path).json()
 
