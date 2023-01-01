@@ -17,6 +17,10 @@ class InvalidURLError(Exception):
     pass
 
 
+class TokenInvalidationError(Exception):
+    pass
+
+
 if PANDABUY_AUTH_KEY is None:
     raise APIKeyMissingError(
         "All methods require you to use your pandabuy auth key. See "
@@ -25,7 +29,6 @@ if PANDABUY_AUTH_KEY is None:
         "your session storage"
     )
 
-
 if USER_ID is None:
     raise UserIDMissingError(
         "Image retrieving methods require you to use your pandabuy User ID. See "
@@ -33,7 +36,6 @@ if USER_ID is None:
         "for how to retrieve your User ID from "
         "your session storage"
     )
-
 
 session = requests.Session()
 session.headers = {'Authorization': f'Bearer {PANDABUY_AUTH_KEY}',
